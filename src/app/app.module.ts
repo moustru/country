@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GraphQLModule } from './graphql.module'
+import { CountryPageModule } from './pages/country-page/country-page.module'
+import { MainPageModule } from './pages/main-page/main-page.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainPageModule,
+    CountryPageModule,
+    GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

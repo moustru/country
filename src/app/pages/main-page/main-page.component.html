@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="content-search">
+    <select
+      class="input"
+      [(ngModel)]="relatedCountry"
+      (change)="changeCountry()"
+    >
+      <option
+        *ngFor="let country of countries; let i = index"
+        [value]="country.code"
+      >
+        {{ country.name }}
+      </option>
+    </select>
+
+    <button
+      class="btn btn-search"
+    >
+      Поиск
+    </button>
+  </div>
+
+  <div class="content-cards">
+    <app-country-card
+      *ngIf="countryInfo"
+      [country]="countryInfo"
+    >
+    </app-country-card>
+  </div>
+</div>
