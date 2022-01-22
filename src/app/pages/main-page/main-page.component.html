@@ -1,29 +1,20 @@
 <div class="content">
-  <div class="content-search">
-    <select
-      class="input"
-      [(ngModel)]="relatedCountry"
-      (change)="changeCountry()"
-    >
-      <option
-        *ngFor="let country of countries; let i = index"
-        [value]="country.code"
-      >
-        {{ country.name }}
-      </option>
-    </select>
-
-    <button
-      class="btn btn-search"
-    >
-      Поиск
-    </button>
+  <div class="content-filters">
+    <form [formGroup]="filterForm">
+      <input
+        type="text"
+        placeholder="Введите название страны"
+        formControlName="countryName"
+        class="input"
+      />
+    </form>
   </div>
 
   <div class="content-cards">
     <app-country-card
-      *ngIf="countryInfo"
-      [country]="countryInfo"
+      *ngFor="let country of countries | filter:filterForm.value.countryName; let i = index"
+      [country]="country"
+      class="content-cards__card"
     >
     </app-country-card>
   </div>

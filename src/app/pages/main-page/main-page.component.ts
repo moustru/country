@@ -1,4 +1,5 @@
-import { Component, NgIterable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms'
 import { CountriesService } from 'src/app/core/services/countries.service'
 import { Country } from 'src/app/core/types/countries.types'
 
@@ -9,11 +10,13 @@ import { Country } from 'src/app/core/types/countries.types'
 })
 
 export class MainPageComponent implements OnInit {
-  relatedCountry: string
   countries: Country[] | null
-  countryInfo: Country | null
+  filterForm: FormGroup
 
-  constructor(private countryService: CountriesService) {}
+  constructor(
+    private countryService: CountriesService,
+    private fb: FormBuilder
+  ) {}
 
   getCountries(): void {
     this.countryService.getCountries()
@@ -22,15 +25,11 @@ export class MainPageComponent implements OnInit {
       )
   }
 
-  changeCountry(): void {
-    this.countryService.getCountry(this.relatedCountry)
-      .subscribe(
-        res => this.countryInfo = res
-      )
-  }
-
   ngOnInit() {
     this.getCountries()
-  }
 
+    this.filterForm = this.fb.group({
+      countryName: ''
+    })
+  }
 }

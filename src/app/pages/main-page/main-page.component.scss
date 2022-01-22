@@ -1,5 +1,5 @@
 .content {
-  &-search, &-cards {
+  &-filters, &-cards {
     margin: 20px;
   }
 
@@ -8,7 +8,7 @@
     flex-wrap: wrap;
 
     &__card {
-      width: 24%;
+      width: 20%;
     }
   }
 }
